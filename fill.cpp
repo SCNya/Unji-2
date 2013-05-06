@@ -9,7 +9,7 @@ Fill::Fill(List_bundle * lst, string *data, unsigned short const hard_th, unsign
     all_thrds(hard_th)
 {
     mute = new mutex;
-    if((size < min_size) || (hard_th == 1))
+    if((size < min_size) || (hard_th == 0))
     {
         mass_between = new unsigned long[2];
         mass_between[0] = 0;

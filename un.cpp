@@ -2,7 +2,7 @@
 
 Un::Un (string n):
     err(false),
-    hard_th(thread::hardware_concurrency())
+    hard_th(thread::hardware_concurrency()-1)
 {
     str = new string(n);
     ss = new stringstream;
@@ -54,7 +54,7 @@ void Un::Create()
     unsigned long min_size(hard_th*1000);
     unsigned short i;
     Fill work(lst, str, hard_th, *size, min_size);
-    if ((hard_th == 1) || ((*size) < min_size))
+    if ((hard_th == 0) || ((*size) < min_size))
     {
         th = new thread(ref(work));
         th->join();
@@ -63,7 +63,7 @@ void Un::Create()
     }
     else
     {
-        thread *mass[hard_th-1];
+        thread *mass[hard_th];
         for (i = 0; i < hard_th; i++)
             mass[i] = new thread(ref(work));
         for (i = 0; i < hard_th; i++)
