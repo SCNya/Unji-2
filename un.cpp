@@ -2,7 +2,7 @@
 
 Un::Un (string n):
     err(false),
-    hard_th(2-1)
+    hard_th(thread::hardware_concurrency()-1)
 {
     str = new string(n);
     ss = new stringstream;

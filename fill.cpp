@@ -76,19 +76,18 @@ void Fill::write(Bundle  *pkg)
     mute->unlock();
 }
 
-unsigned long Fill::parting(unsigned long temp_size) //prt = temp_size
+unsigned long Fill::parting(unsigned long temp_size)
 {
-    unsigned long prt;
 
     if(temp_size % all_thrds == 0)
-        prt = temp_size / all_thrds;
+        temp_size = temp_size / all_thrds;
     else
     {
         temp_size--;
-        prt = parting(temp_size);
+        temp_size = parting(temp_size);
     }
 
-    return prt;
+    return temp_size;
 }
 
 unsigned long Fill::coordinate(unsigned long i)
