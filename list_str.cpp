@@ -18,6 +18,7 @@ void List_str::add(string *data)
 {
     if(new_cell->get_my_data() != 0)
         new_cell = new_cell->add(data);
+
     else
         new_cell->set_my_data(data);
 }

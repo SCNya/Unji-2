@@ -11,13 +11,13 @@ Fill::Fill(List_bundle * lst, string *data, unsigned short const hard_th, unsign
     mute = new mutex;
     if((size < min_size) || (hard_th <= 1))
     {
-        mass_between = new unsigned long[2];
+        mass_between = new unsigned long long[2];
         mass_between[0] = 0;
         mass_between[1] = size;
     }
     else
     {
-        mass_between = new unsigned long[mass_size];
+        mass_between = new unsigned long long[mass_size];
         part = parting(size);
         between();
     }
@@ -34,9 +34,9 @@ void Fill::operator()()
     thrd++;
     stringstream ss;
     string* data;
-    List_str mass;
-    unsigned long begin = mass_between[thrd-1];
-    unsigned long end = mass_between[thrd];
+    List_str *mass = new List_str;
+    unsigned long long begin = mass_between[thrd-1];
+    unsigned long long end = mass_between[thrd];
 
     do
     {
@@ -46,7 +46,7 @@ void Fill::operator()()
             if ((((*str) [(begin+1)]>'&') && ((*str) [(begin+1)]<='/')) || (((*str) [(begin+1)]>=' ') && ((*str) [(begin+1)]<'&')) || ((*str) [(begin+1)]==0) || (((*str) [(begin+1)]>='[') && ((*str) [(begin+1)]<='^')) || ((*str) [(begin+1)]=='~') || (((*str) [(begin+1)]>=':') && ((*str) [(begin+1)]<='?')) || (((*str) [(begin+1)]>='{') && ((*str) [(begin+1)]<='~')))
             {
                 data = new string(ss.str());
-                mass.add(data);
+                mass->add(data);
                 ss.str("");
                 ss.clear();
             }
@@ -76,7 +76,7 @@ void Fill::write(Bundle  *pkg)
     mute->unlock();
 }
 
-unsigned long Fill::parting(unsigned long temp_size)
+unsigned long long Fill::parting(unsigned long long temp_size)
 {
 
     if(temp_size % all_thrds == 0)
@@ -90,7 +90,7 @@ unsigned long Fill::parting(unsigned long temp_size)
     return temp_size;
 }
 
-unsigned long Fill::coordinate(unsigned long i)
+unsigned long long Fill::coordinate(unsigned long long i)
 {
     if (((((*str) [i]<' ') || ((*str) [i]>='&'))) && ((((*str) [i]<='&') || ((*str) [i]>'/'))) && ((*str) [i]!='\n') && ((*str) [i]!=0) && (((*str) [i]<'[') || ((*str) [i]>'^')) && ((*str) [i]!='~') && (((*str) [i]<':') || ((*str) [i]>'?')) && (((*str) [i]<'{') || ((*str) [i]>'~')))
     {
@@ -100,29 +100,31 @@ unsigned long Fill::coordinate(unsigned long i)
     return i;
 }
 
-void Fill::clear(List_str& mass)
+void Fill::clear(List_str *mass)
 {
     Bundle *pkg;
     string *sample(0), *word(0);
-    while(mass.show(&sample))
+    while(mass->show(&sample))
     {
         pkg = new Bundle();
         pkg->word = *sample;
         pkg->quantity = 1;
-        mass.del();
-        while(mass.show(&word))
+        mass->del();
+        while(mass->show(&word))
         {
             if(pkg->word == *(word))
             {
                 pkg->quantity++;
-                mass.del();
+                mass->del();
             }
             else
-                mass.next();
+                mass->next();
         }
-        mass.set_pointer_in_first();
+        mass->set_pointer_in_first();
         write(pkg);
     }
+    delete mass;
+    mass = 0;
 }
 
 bool Fill::finde_item(Bundle *pkg)

@@ -40,19 +40,14 @@ void cell_str::set_my_data(string *data)
     str = data;
 }
 
-cell_str* cell_str::get_next()
-{
-    return my_next;
-}
-
-string* cell_str::get_my_data()
+string * cell_str::get_my_data()
 {
     return str;
 }
 
-cell_str* cell_str::add(string *data)
+cell_str * cell_str::add(string *data)
 {
-    cell_str*  cell = new cell_str(data);
+    cell_str *cell = new cell_str(data);
     my_next = cell;
     return cell;
 }

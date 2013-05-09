@@ -6,8 +6,8 @@ Un::Un (string n):
 {
     str = new string(n);
     ss = new stringstream;
-    len = new unsigned long(0);
-    size = new unsigned long(0);
+    len = new unsigned long long(0);
+    size = new unsigned long long(0);
     Start();
 }
 
@@ -54,7 +54,7 @@ void Un::Create()
     unsigned long min_size(hard_th*1000);
     unsigned short i;
     Fill work(lst, str, hard_th, *size, min_size);
-    if ((hard_th <= 1) || ((*size) < min_size))
+    if ((hard_th <= 1) || ((*size) <= min_size))
     {
         th = new thread(ref(work));
         th->join();
@@ -63,7 +63,7 @@ void Un::Create()
     }
     else
     {
-        thread *mass[hard_th];
+        thread **mass = new thread *[hard_th];
         for (i = 0; i < hard_th; i++)
             mass[i] = new thread(ref(work));
         for (i = 0; i < hard_th; i++)
@@ -76,7 +76,10 @@ void Un::Create()
             delete mass[i];
             mass[i] = 0;
         }
+        delete [] mass;
+        mass = 0;
     }
+
     lst->show_all();
 }
 

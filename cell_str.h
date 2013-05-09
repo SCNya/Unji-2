@@ -10,10 +10,9 @@ public:
     cell_str();
     cell_str(string*);
     ~cell_str();
-    cell_str* add(string*);
+    cell_str* add(string *);
     cell_str* del();
     cell_str* next();
-    cell_str* get_next();
     string* get_my_data();
     string* show();
     void set_next(cell_str*);

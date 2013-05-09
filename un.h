@@ -23,8 +23,8 @@ private:
     void Create();
     void Boot();
     bool err;
-    unsigned short const hard_th;
-    unsigned long *len, *size;
+    const unsigned short hard_th;
+    unsigned long long *len, *size;
 	ifstream *in;
     string *str;
 	stringstream *ss;

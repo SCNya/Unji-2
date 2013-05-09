@@ -19,6 +19,7 @@ cell_bundle::~cell_bundle()
     my_data = 0;
     delete my_next;
     my_next = 0;
+
 }
 
 Bundle * cell_bundle::show()
@@ -39,11 +40,6 @@ void cell_bundle::set_next(cell_bundle *next)
 void cell_bundle::set_my_data(Bundle *data)
 {
     my_data = data;
-}
-
-cell_bundle * cell_bundle::get_next()
-{
-    return my_next;
 }
 
 Bundle * cell_bundle::get_my_data()
