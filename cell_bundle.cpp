@@ -42,11 +42,6 @@ void cell_bundle::set_my_data(Bundle *data)
     my_data = data;
 }
 
-Bundle * cell_bundle::get_my_data()
-{
-    return my_data;
-}
-
 cell_bundle * cell_bundle::add(Bundle *data)
 {
     cell_bundle*  cell = new cell_bundle(data);

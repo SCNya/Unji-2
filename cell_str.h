@@ -13,7 +13,6 @@ public:
     cell_str* add(string *);
     cell_str* del();
     cell_str* next();
-    string* get_my_data();
     string* show();
     void set_next(cell_str*);
     void set_my_data(string*);

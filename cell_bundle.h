@@ -10,7 +10,6 @@ public:
     ~cell_bundle();
     cell_bundle *add(Bundle *);
     cell_bundle *next();
-    Bundle *get_my_data();
     Bundle *show();
     void show_all();
     void set_next(cell_bundle*);

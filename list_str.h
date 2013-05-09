@@ -7,9 +7,9 @@ class List_str
 public:
     List_str();
     ~List_str();
-    void add(string*);
+    void add(string *);
     void del();
-    bool show(string**);
+    bool show(string **);
     void next();
     void set_pointer_in_first();
 private:

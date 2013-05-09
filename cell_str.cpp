@@ -40,11 +40,6 @@ void cell_str::set_my_data(string *data)
     str = data;
 }
 
-string * cell_str::get_my_data()
-{
-    return str;
-}
-
 cell_str * cell_str::add(string *data)
 {
     cell_str *cell = new cell_str(data);

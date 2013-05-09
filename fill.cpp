@@ -54,7 +54,8 @@ void Fill::operator()()
         begin++;
     }
     while (begin < end);
-    clear(mass);
+
+    clear(&mass);
 }
 
 void Fill::between()
@@ -100,31 +101,32 @@ unsigned long long Fill::coordinate(unsigned long long i)
     return i;
 }
 
-void Fill::clear(List_str *mass)
+void Fill::clear(List_str **mass)
 {
     Bundle *pkg;
     string *sample(0), *word(0);
-    while(mass->show(&sample))
+
+    while((*mass)->show(&sample))
     {
         pkg = new Bundle();
         pkg->word = *sample;
         pkg->quantity = 1;
-        mass->del();
-        while(mass->show(&word))
+        (*mass)->del();
+        while((*mass)->show(&word))
         {
             if(pkg->word == *(word))
             {
                 pkg->quantity++;
-                mass->del();
+                (*mass)->del();
             }
             else
-                mass->next();
+                (*mass)->next();
         }
-        mass->set_pointer_in_first();
+        (*mass)->set_pointer_in_first();
         write(pkg);
     }
-    delete mass;
-    mass = 0;
+    delete *mass;
+    *mass = 0;
 }
 
 bool Fill::finde_item(Bundle *pkg)

@@ -15,7 +15,7 @@ List_bundle::~List_bundle()
 
 void List_bundle::add(Bundle *data)
 {
-    if(new_cell->get_my_data() != 0)
+    if(new_cell->show() != 0)
         new_cell = new_cell->add(data);
     else
         new_cell->set_my_data(data);
@@ -23,7 +23,7 @@ void List_bundle::add(Bundle *data)
 
 bool List_bundle::show(Bundle **temp_bundle)
 {
-    if((temp_first != 0) && (temp_first->get_my_data() != 0))
+    if((temp_first != 0) && (temp_first->show() != 0))
         *temp_bundle = temp_first->show();
     else
         temp_first = 0;

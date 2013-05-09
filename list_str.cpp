@@ -16,7 +16,7 @@ List_str::~List_str()
 
 void List_str::add(string *data)
 {
-    if(new_cell->get_my_data() != 0)
+    if(new_cell->show() != 0)
         new_cell = new_cell->add(data);
 
     else
@@ -34,7 +34,7 @@ void List_str::del()
     }
 }
 
-bool List_str::show(string  **str)
+bool List_str::show(string **str)
 {
     if(temp_first != 0)
         *str = temp_first->show();
