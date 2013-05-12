@@ -1,4 +1,4 @@
-//Unji 2  by Alexeenko Vsevolod 09.05.2013 13:08 ver. alpha alpha 2.0.2 (ASCII)
+//Unji 2  by Alexeenko Vsevolod 09.05.2013 17:20 ver. alpha 2.1.0 (ASCII)
 #include "un.h"
 
 int main()

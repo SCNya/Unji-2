@@ -27,6 +27,8 @@ Fill::~Fill()
 {
     delete [] mass_between;
     mass_between = 0;
+    delete mute;
+    mute = 0;
 }
 
 void Fill::operator()()
@@ -54,7 +56,6 @@ void Fill::operator()()
         begin++;
     }
     while (begin < end);
-
     clear(&mass);
 }
 
@@ -139,6 +140,10 @@ bool Fill::finde_item(Bundle *pkg)
         {
             temp_bundle->quantity += pkg->quantity;
             fnd = true;
+            delete pkg;
+            pkg = 0;
+            fnd = true;
+            break;
         }
         final_list->next();
     }

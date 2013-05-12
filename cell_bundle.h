@@ -12,8 +12,7 @@ public:
     cell_bundle *next();
     Bundle *show();
     void show_all();
-    void set_next(cell_bundle*);
-    void set_my_data(Bundle*);
+    void set_my_data(Bundle *);
 
 private:
     Bundle *my_data;

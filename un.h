@@ -14,9 +14,9 @@ class Un
 {
 
 public:
-	Un (string);
-	~Un();
-	void Find();
+    Un (string);
+    ~Un();
+    void Find();
 private:
     void Open();
     void Start();
@@ -25,9 +25,9 @@ private:
     bool err;
     const unsigned short hard_th;
     unsigned long long *len, *size;
-	ifstream *in;
+    ifstream *in;
     string *str;
-	stringstream *ss;
+    stringstream *ss;
     List_bundle *lst;
     thread *th;
 };

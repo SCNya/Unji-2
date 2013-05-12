@@ -32,11 +32,6 @@ cell_bundle * cell_bundle::next()
     return my_next;
 }
 
-void cell_bundle::set_next(cell_bundle *next)
-{
-    my_next = next;
-}
-
 void cell_bundle::set_my_data(Bundle *data)
 {
     my_data = data;
@@ -44,9 +39,8 @@ void cell_bundle::set_my_data(Bundle *data)
 
 cell_bundle * cell_bundle::add(Bundle *data)
 {
-    cell_bundle*  cell = new cell_bundle(data);
-    my_next = cell;
-    return cell;
+    my_next = new cell_bundle(data);
+    return my_next;
 }
 
 void cell_bundle::show_all()

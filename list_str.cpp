@@ -25,12 +25,17 @@ void List_str::add(string *data)
 
 void List_str::del()
 {
+    cell_str *p4del(temp_first);
     if(temp_first == first)
+    {
         temp_first = first = first->del();
+        delete p4del;
+    }
     else
     {
         temp_first = temp_first->del();
         before_temp_first->set_next(temp_first);
+        delete p4del;
     }
 }
 

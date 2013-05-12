@@ -16,8 +16,6 @@ cell_str::~cell_str()
 {
     delete str;
     str = 0;
-    delete my_next;
-    my_next = 0;
 }
 
 string* cell_str::show()
@@ -42,14 +40,11 @@ void cell_str::set_my_data(string *data)
 
 cell_str * cell_str::add(string *data)
 {
-    cell_str *cell = new cell_str(data);
-    my_next = cell;
-    return cell;
+    my_next = new cell_str(data);
+    return my_next;
 }
 
 cell_str* cell_str::del()
 {
-    delete str;
-    str = 0;
     return my_next;
 }
