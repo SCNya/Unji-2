@@ -94,7 +94,5 @@ void Un::Boot()
 void Un::Find()
 {
     if(!err)
-    {
         Create();
-    }
 }

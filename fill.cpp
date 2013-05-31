@@ -132,21 +132,18 @@ void Fill::clear(List_str **mass)
 
 bool Fill::finde_item(Bundle *pkg)
 {
-    bool fnd(false);
     Bundle *temp_bundle;
+    final_list->set_pointer_in_first();
     while(final_list->show(&temp_bundle))
     {
         if(pkg->word == temp_bundle->word)
         {
             temp_bundle->quantity += pkg->quantity;
-            fnd = true;
             delete pkg;
             pkg = 0;
-            fnd = true;
-            break;
+            return true;
         }
         final_list->next();
     }
-    final_list->set_pointer_in_first();
-    return fnd;
+    return false;
 }
