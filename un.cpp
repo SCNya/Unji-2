@@ -4,6 +4,7 @@ Un::Un (string n):
     err(false),
     hard_th(thread::hardware_concurrency()-1)
 {
+    in = new ifstream;
     str = new string(n);
     ss = new stringstream;
     len = new unsigned long long(0);
@@ -39,7 +40,6 @@ void Un::Start()
 
 void Un::Open()
 {
-    in = new ifstream;
     (*in).open((*str).c_str());
     if (!(*in).good())
     {
