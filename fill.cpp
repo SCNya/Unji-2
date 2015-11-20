@@ -35,12 +35,12 @@ void Fill::operator()()
 {
     mute->lock();
     thrd++;
-    mute->unlock();
     stringstream ss;
     string* data;
     List_str *mass = new List_str;
     unsigned long long begin = mass_between[thrd-1];
     unsigned long long end = mass_between[thrd];
+    mute->unlock();
 
     do
     {
