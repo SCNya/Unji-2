@@ -33,7 +33,9 @@ Fill::~Fill()
 
 void Fill::operator()()
 {
+    mute->lock();
     thrd++;
+    mute->unlock();
     stringstream ss;
     string* data;
     List_str *mass = new List_str;
